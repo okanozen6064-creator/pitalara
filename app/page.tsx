@@ -44,55 +44,76 @@ export default function Home() {
         </div>
 
         {/* RIGHT SIDE - NAVIGATION (60%) */}
-        <div className="w-full lg:w-[60%] h-[60vh] lg:h-full flex flex-col">
+        <div className="w-full lg:w-[60%] h-[60vh] lg:h-full flex flex-col bg-neutral-950">
           {/* NAV ITEM 1: HİKAYEMİZ */}
           <div
             onClick={() => scrollToSection('story')}
-            className="group relative flex-1 border-b border-neutral-800 cursor-pointer overflow-hidden"
+            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5]"
           >
             <Image
               src="/7.PNG"
               alt="Hikayemiz"
               fill
-              className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-60"
+              className="object-cover opacity-20 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50"
             />
-            <div className="absolute inset-0 flex items-center justify-between px-8 md:px-16 bg-gradient-to-r from-neutral-950/80 to-transparent">
-              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wide group-hover:text-yellow-600 transition-colors">Hikayemiz</h2>
-              <ArrowDown className="w-8 h-8 text-neutral-500 group-hover:text-yellow-600 transition-colors transform group-hover:translate-y-2 duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/40 to-transparent" />
+
+            <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
+              <div className="flex flex-col">
+                <span className="text-xs text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">KEŞFET</span>
+                <h2 className="text-3xl md:text-4xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
+                  HİKAYEMİZ
+                </h2>
+              </div>
+              <ArrowDown className="w-6 h-6 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:translate-y-2 opacity-50 group-hover:opacity-100" />
             </div>
           </div>
 
           {/* NAV ITEM 2: MENÜ */}
           <div
             onClick={() => scrollToSection('menu')}
-            className="group relative flex-1 border-b border-neutral-800 cursor-pointer overflow-hidden"
+            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5] border-t border-white/5"
           >
             <Image
               src="/4.PNG"
               alt="Menü"
               fill
-              className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-60"
+              className="object-cover opacity-20 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50"
             />
-            <div className="absolute inset-0 flex items-center justify-between px-8 md:px-16 bg-gradient-to-r from-neutral-950/80 to-transparent">
-              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wide group-hover:text-yellow-600 transition-colors">Menü</h2>
-              <Menu className="w-8 h-8 text-neutral-500 group-hover:text-yellow-600 transition-colors transform group-hover:scale-110 duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/40 to-transparent" />
+
+            <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
+              <div className="flex flex-col">
+                <span className="text-xs text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">LEZZETLER</span>
+                <h2 className="text-3xl md:text-4xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
+                  MENÜ
+                </h2>
+              </div>
+              <Menu className="w-6 h-6 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:scale-110 opacity-50 group-hover:opacity-100" />
             </div>
           </div>
 
           {/* NAV ITEM 3: REZERVASYON */}
           <div
             onClick={() => scrollToSection('contact')}
-            className="group relative flex-1 cursor-pointer overflow-hidden"
+            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5] border-t border-white/5"
           >
             <Image
               src="/3.PNG"
               alt="Rezervasyon"
               fill
-              className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-60"
+              className="object-cover opacity-20 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50"
             />
-            <div className="absolute inset-0 flex items-center justify-between px-8 md:px-16 bg-gradient-to-r from-neutral-950/80 to-transparent">
-              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wide group-hover:text-yellow-600 transition-colors">Rezervasyon</h2>
-              <Calendar className="w-8 h-8 text-neutral-500 group-hover:text-yellow-600 transition-colors transform group-hover:rotate-12 duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/40 to-transparent" />
+
+            <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
+              <div className="flex flex-col">
+                <span className="text-xs text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">BİZE ULAŞIN</span>
+                <h2 className="text-3xl md:text-4xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
+                  REZERVASYON
+                </h2>
+              </div>
+              <Calendar className="w-6 h-6 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:rotate-12 opacity-50 group-hover:opacity-100" />
             </div>
           </div>
         </div>
