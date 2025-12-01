@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { InstagramIcon, MapPin } from "lucide-react"
+import Image from "next/image"
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -16,6 +17,15 @@ export default function Home() {
       <section className="min-h-screen relative flex items-end justify-start pt-32 pb-20 px-8 md:px-16 overflow-hidden">
         {/* Dark moody gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-yellow-950/10 to-red-950/20 -z-10" />
+        <div className="absolute inset-0 -z-20">
+          <Image
+            src="/7.PNG"
+            alt="Hero Background"
+            fill
+            className="object-cover opacity-40"
+            priority
+          />
+        </div>
 
         {/* Decorative overlapping shapes */}
         <div className="absolute top-20 right-10 w-96 h-96 bg-yellow-900/5 rounded-full blur-3xl -z-10" />
@@ -56,13 +66,13 @@ export default function Home() {
               </div>
             </div>
             <div className="lg:order-1 relative h-96 bg-gradient-to-br from-yellow-800/20 to-red-900/20 rounded-2xl overflow-hidden group">
-              <div className="absolute inset-0 bg-neutral-800" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-8xl mb-4">🫓</div>
-                  <p className="text-neutral-400 text-sm">Klasik Pita</p>
-                </div>
-              </div>
+              <Image
+                src="/1.PNG"
+                alt="Klasik Pita"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
             </div>
           </div>
 
@@ -76,14 +86,14 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="relative h-96 bg-gradient-to-br from-red-800/20 to-yellow-900/20 rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-neutral-800" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-8xl mb-4">🌶️</div>
-                  <p className="text-neutral-400 text-sm">Sucuklu Pita</p>
-                </div>
-              </div>
+            <div className="relative h-96 bg-gradient-to-br from-red-800/20 to-yellow-900/20 rounded-2xl overflow-hidden group">
+              <Image
+                src="/2.PNG"
+                alt="Sucuklu Pita"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
             </div>
           </div>
 
@@ -97,14 +107,14 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="lg:order-1 relative h-96 bg-gradient-to-br from-yellow-800/20 to-neutral-800/50 rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-neutral-800" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-8xl mb-4">🧀</div>
-                  <p className="text-neutral-400 text-sm">Beyaz Peynir Pita</p>
-                </div>
-              </div>
+            <div className="lg:order-1 relative h-96 bg-gradient-to-br from-yellow-800/20 to-neutral-800/50 rounded-2xl overflow-hidden group">
+              <Image
+                src="/3.PNG"
+                alt="Beyaz Peynir Pita"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
             </div>
           </div>
         </div>
@@ -122,28 +132,42 @@ export default function Home() {
                 price: "$7.50",
                 desc: "Scrambled eggs with tomatoes, peppers, and onions",
                 color: "border-yellow-600",
+                image: "/4.PNG",
               },
               {
                 name: "Börek",
                 price: "$8.00",
                 desc: "Crispy phyllo with spinach and cheese filling",
                 color: "border-red-600",
+                image: "/5.PNG",
               },
               {
                 name: "Açma",
                 price: "$4.50",
                 desc: "Traditional Turkish breakfast bread with sesame seeds",
                 color: "border-yellow-600",
+                image: "/6.PNG",
               },
             ].map((item, idx) => (
-              <div key={idx} className={`border-l-4 ${item.color} pl-6 py-8`}>
-                <h3 className="text-3xl md:text-4xl font-serif font-light mb-2">{item.name}</h3>
-                <p
-                  className={`text-xl font-light ${item.color === "border-yellow-600" ? "text-yellow-600" : "text-red-600"}`}
-                >
-                  {item.price}
-                </p>
-                <p className="text-neutral-400 mt-3 text-base leading-relaxed">{item.desc}</p>
+              <div key={idx} className="group relative overflow-hidden rounded-xl bg-neutral-900/50">
+                <div className="relative h-64 w-full overflow-hidden">
+                  <Image
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
+                </div>
+                <div className={`border-l-4 ${item.color} pl-6 py-8 relative z-10 bg-neutral-900/80 backdrop-blur-sm -mt-12 mx-4 mb-4 rounded-r-lg`}>
+                  <h3 className="text-3xl md:text-4xl font-serif font-light mb-2">{item.name}</h3>
+                  <p
+                    className={`text-xl font-light ${item.color === "border-yellow-600" ? "text-yellow-600" : "text-red-600"}`}
+                  >
+                    {item.price}
+                  </p>
+                  <p className="text-neutral-400 mt-3 text-base leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
