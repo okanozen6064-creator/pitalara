@@ -1,258 +1,290 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { InstagramIcon, MapPin } from "lucide-react"
+import { InstagramIcon, MapPin, ArrowDown, ChevronRight, Menu, Phone, Calendar } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [activeSection, setActiveSection] = useState<string | null>(null)
 
   useEffect(() => {
     setIsLoaded(true)
   }, [])
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+      setActiveSection(id)
+    }
+  }
+
   return (
-    <main className="bg-neutral-950 text-neutral-100 font-sans overflow-hidden">
-      {/* ENTRANCE - Cinematic Hero */}
-      <section className="min-h-screen relative flex items-end justify-start pt-32 pb-20 px-8 md:px-16 overflow-hidden">
-        {/* Dark moody gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-yellow-950/10 to-red-950/20 -z-10" />
-        <div className="absolute inset-0 -z-20">
-          <Image
-            src="/7.PNG"
-            alt="Hero Background"
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
-        </div>
+    <main className="bg-neutral-950 text-neutral-100 font-sans overflow-x-hidden">
+      {/* SPLIT HERO SECTION */}
+      <section className="h-screen flex flex-col lg:flex-row relative">
+        {/* LEFT SIDE - BRANDING (40%) */}
+        <div className="w-full lg:w-[40%] h-[40vh] lg:h-full relative flex flex-col justify-center px-8 md:px-16 z-20 bg-neutral-950 border-b lg:border-b-0 lg:border-r border-neutral-800">
+          {/* Background Effects */}
+          <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-yellow-950/5 to-red-950/10 -z-10" />
+          <div className="absolute top-20 right-10 w-64 h-64 bg-yellow-900/5 rounded-full blur-3xl -z-10" />
 
-        {/* Decorative overlapping shapes */}
-        <div className="absolute top-20 right-10 w-96 h-96 bg-yellow-900/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-32 left-20 w-72 h-72 bg-red-900/5 rounded-full blur-3xl -z-10" />
-
-        <div
-          className={`transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-        >
-          {/* Main title */}
-          <h1 className="font-serif text-8xl md:text-9xl font-light tracking-wider mb-6 leading-none">
-            <span className="block">PITA</span>
-            <span className="block text-yellow-600">LARA</span>
-          </h1>
-
-          {/* Subtext */}
-          <p className="text-xl md:text-2xl font-light tracking-widest text-neutral-400 mt-8">
-            ARTISAN BREAKFAST & COFFEE
-          </p>
-        </div>
-      </section>
-
-      {/* FOOD SECTION - Asymmetrical Menu */}
-      <section className="py-32 px-8 md:px-16 bg-neutral-900/50">
-        {/* Odun Ateşi - Pitas */}
-        <div className="mb-32">
-          <h2 className="text-7xl md:text-8xl font-serif font-light mb-20 text-neutral-100 tracking-tighter">
-            Odun Ateşi
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="space-y-8 lg:order-2">
-              <div className="border-l-4 border-yellow-600 pl-8">
-                <h3 className="text-4xl md:text-5xl font-serif font-light mb-3">Klasik Pita</h3>
-                <p className="text-2xl text-yellow-600 font-light">$8.50</p>
-                <p className="text-neutral-400 mt-4 text-lg leading-relaxed">
-                  Freshly baked wood-fired pita with Mediterranean herbs, served with tzatziki and roasted vegetables.
-                </p>
-              </div>
-            </div>
-            <div className="lg:order-1 relative h-96 bg-gradient-to-br from-yellow-800/20 to-red-900/20 rounded-2xl overflow-hidden group">
-              <Image
-                src="/1.PNG"
-                alt="Klasik Pita"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="space-y-8">
-              <div className="border-l-4 border-red-600 pl-8">
-                <h3 className="text-4xl md:text-5xl font-serif font-light mb-3">Sucuklu Pita</h3>
-                <p className="text-2xl text-red-600 font-light">$10.00</p>
-                <p className="text-neutral-400 mt-4 text-lg leading-relaxed">
-                  Turkish soudjouk sausage with caramelized onions, fresh herbs, and sumac.
-                </p>
-              </div>
-            </div>
-            <div className="relative h-96 bg-gradient-to-br from-red-800/20 to-yellow-900/20 rounded-2xl overflow-hidden group">
-              <Image
-                src="/2.PNG"
-                alt="Sucuklu Pita"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 lg:order-2">
-              <div className="border-l-4 border-yellow-600 pl-8">
-                <h3 className="text-4xl md:text-5xl font-serif font-light mb-3">Beyaz Peynir Pita</h3>
-                <p className="text-2xl text-yellow-600 font-light">$9.25</p>
-                <p className="text-neutral-400 mt-4 text-lg leading-relaxed">
-                  Creamy white cheese, slow-roasted tomatoes, arugula, and olive oil drizzle.
-                </p>
-              </div>
-            </div>
-            <div className="lg:order-1 relative h-96 bg-gradient-to-br from-yellow-800/20 to-neutral-800/50 rounded-2xl overflow-hidden group">
-              <Image
-                src="/3.PNG"
-                alt="Beyaz Peynir Pita"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
-            </div>
-          </div>
-        </div>
-
-        {/* Kahvaltı - Breakfast */}
-        <div className="border-t border-neutral-800 pt-32">
-          <h2 className="text-7xl md:text-8xl font-serif font-light mb-20 text-neutral-100 tracking-tighter">
-            Kahvaltı
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              {
-                name: "Menemen",
-                price: "$7.50",
-                desc: "Scrambled eggs with tomatoes, peppers, and onions",
-                color: "border-yellow-600",
-                image: "/4.PNG",
-              },
-              {
-                name: "Börek",
-                price: "$8.00",
-                desc: "Crispy phyllo with spinach and cheese filling",
-                color: "border-red-600",
-                image: "/5.PNG",
-              },
-              {
-                name: "Açma",
-                price: "$4.50",
-                desc: "Traditional Turkish breakfast bread with sesame seeds",
-                color: "border-yellow-600",
-                image: "/6.PNG",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="group relative overflow-hidden rounded-xl bg-neutral-900/50">
-                <div className="relative h-64 w-full overflow-hidden">
-                  <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
-                </div>
-                <div className={`border-l-4 ${item.color} pl-6 py-8 relative z-10 bg-neutral-900/80 backdrop-blur-sm -mt-12 mx-4 mb-4 rounded-r-lg`}>
-                  <h3 className="text-3xl md:text-4xl font-serif font-light mb-2">{item.name}</h3>
-                  <p
-                    className={`text-xl font-light ${item.color === "border-yellow-600" ? "text-yellow-600" : "text-red-600"}`}
-                  >
-                    {item.price}
-                  </p>
-                  <p className="text-neutral-400 mt-3 text-base leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* COFFEE & DRINKS - Premium Dark Section */}
-      <section className="py-32 px-8 md:px-16 bg-gradient-to-b from-neutral-900 via-orange-950/30 to-neutral-950">
-        <h2 className="text-7xl md:text-8xl font-serif font-light mb-6 text-neutral-100 tracking-tighter">
-          Kahve & İçecekler
-        </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-yellow-600 to-transparent mb-20" />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              name: "V60",
-              price: "$5.50",
-              desc: "Hand-poured precision brewing",
-            },
-            {
-              name: "Cold Brew",
-              price: "$4.75",
-              desc: "24-hour cold extraction",
-            },
-            {
-              name: "Turkish Coffee",
-              price: "$3.50",
-              desc: "Traditional copper pot method",
-            },
-            {
-              name: "Artisan Tea",
-              price: "$4.00",
-              desc: "Loose leaf selection",
-            },
-            {
-              name: "Cortado",
-              price: "$4.25",
-              desc: "Balanced espresso & steamed milk",
-            },
-            {
-              name: "Flat White",
-              price: "$5.00",
-              desc: "Silky microfoam perfection",
-            },
-            {
-              name: "Fresh Orange Juice",
-              price: "$5.50",
-              desc: "Daily pressed",
-            },
-            {
-              name: "Ayran",
-              price: "$3.00",
-              desc: "Traditional yogurt drink",
-            },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-neutral-900/80 backdrop-blur border border-neutral-800 p-6 hover:border-yellow-600/50 transition-colors"
-            >
-              <h3 className="text-2xl font-serif font-light mb-2 text-neutral-100">{item.name}</h3>
-              <p className="text-yellow-600 text-lg font-light mb-3">{item.price}</p>
-              <p className="text-neutral-500 text-sm">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-16 px-8 md:px-16 border-t border-neutral-800 bg-neutral-950">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-          <div>
-            <p className="text-neutral-400 text-lg mb-4 flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-yellow-600" />
-              Istanbul, Turkey
+          <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+            <h1 className="font-serif text-7xl md:text-8xl lg:text-9xl font-light tracking-wider mb-6 leading-none">
+              <span className="block">PITA</span>
+              <span className="block text-yellow-600">LARA</span>
+            </h1>
+            <p className="text-lg md:text-xl font-light tracking-widest text-neutral-400 mt-6 max-w-md">
+              ARTISAN BREAKFAST & COFFEE
             </p>
-            <p className="text-neutral-500 text-sm">Open Daily 7am - 10pm</p>
+            <div className="mt-12 w-24 h-1 bg-yellow-600" />
+          </div>
+        </div>
+
+        {/* RIGHT SIDE - NAVIGATION (60%) */}
+        <div className="w-full lg:w-[60%] h-[60vh] lg:h-full flex flex-col">
+          {/* NAV ITEM 1: HİKAYEMİZ */}
+          <div
+            onClick={() => scrollToSection('story')}
+            className="group relative flex-1 border-b border-neutral-800 cursor-pointer overflow-hidden"
+          >
+            <Image
+              src="/7.PNG"
+              alt="Hikayemiz"
+              fill
+              className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-60"
+            />
+            <div className="absolute inset-0 flex items-center justify-between px-8 md:px-16 bg-gradient-to-r from-neutral-950/80 to-transparent">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wide group-hover:text-yellow-600 transition-colors">Hikayemiz</h2>
+              <ArrowDown className="w-8 h-8 text-neutral-500 group-hover:text-yellow-600 transition-colors transform group-hover:translate-y-2 duration-300" />
+            </div>
           </div>
 
-          <a href="#" className="flex items-center gap-2 text-neutral-400 hover:text-yellow-600 transition-colors">
-            <InstagramIcon className="w-5 h-5" />
-            <span className="text-lg">@pitalara</span>
-          </a>
+          {/* NAV ITEM 2: MENÜ */}
+          <div
+            onClick={() => scrollToSection('menu')}
+            className="group relative flex-1 border-b border-neutral-800 cursor-pointer overflow-hidden"
+          >
+            <Image
+              src="/4.PNG"
+              alt="Menü"
+              fill
+              className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-60"
+            />
+            <div className="absolute inset-0 flex items-center justify-between px-8 md:px-16 bg-gradient-to-r from-neutral-950/80 to-transparent">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wide group-hover:text-yellow-600 transition-colors">Menü</h2>
+              <Menu className="w-8 h-8 text-neutral-500 group-hover:text-yellow-600 transition-colors transform group-hover:scale-110 duration-300" />
+            </div>
+          </div>
+
+          {/* NAV ITEM 3: REZERVASYON */}
+          <div
+            onClick={() => scrollToSection('contact')}
+            className="group relative flex-1 cursor-pointer overflow-hidden"
+          >
+            <Image
+              src="/3.PNG"
+              alt="Rezervasyon"
+              fill
+              className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-60"
+            />
+            <div className="absolute inset-0 flex items-center justify-between px-8 md:px-16 bg-gradient-to-r from-neutral-950/80 to-transparent">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wide group-hover:text-yellow-600 transition-colors">Rezervasyon</h2>
+              <Calendar className="w-8 h-8 text-neutral-500 group-hover:text-yellow-600 transition-colors transform group-hover:rotate-12 duration-300" />
+            </div>
+          </div>
         </div>
-      </footer>
+      </section>
+
+      {/* SECTION 1: HİKAYEMİZ & NATURAL PRODUCTS */}
+      <section id="story" className="min-h-screen bg-neutral-900 relative py-32 px-8 md:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
+            <div className="space-y-8">
+              <h2 className="text-6xl md:text-8xl font-serif font-light text-yellow-600">Köklerimiz</h2>
+              <p className="text-xl md:text-2xl text-neutral-300 font-light leading-relaxed">
+                Antalya'nın bereketli topraklarından ilham alarak, geleneksel lezzetleri modern bir dokunuşla sofranıza getiriyoruz. Her bir pita, odun ateşinin sıcaklığı ve ustalarımızın el emeği ile şekilleniyor.
+              </p>
+              <p className="text-lg text-neutral-400 font-light leading-relaxed">
+                2015 yılında küçük bir fırın olarak başladığımız bu yolculukta, amacımız sadece karın doyurmak değil, ruhu besleyen bir deneyim sunmaktı. Bugün, Pita Lara ailesi olarak, misafirlerimize ev sıcaklığında bir atmosfer ve unutulmaz tatlar sunmanın gururunu yaşıyoruz.
+              </p>
+            </div>
+            <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+              <Image src="/1.PNG" alt="Our Story" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 to-transparent" />
+            </div>
+          </div>
+
+          {/* Natural Products Slide Effect */}
+          <div className="relative h-[80vh] rounded-3xl overflow-hidden my-32 group">
+            <Image src="/6.PNG" alt="Natural Products" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <h3 className="text-5xl md:text-7xl font-serif font-light mb-8 text-white">Doğal & Yerel</h3>
+              <p className="text-2xl md:text-3xl font-light text-neutral-200 max-w-3xl leading-relaxed">
+                "Mutfağımızda kullandığımız her malzeme, yerel üreticilerden özenle seçiliyor. Mevsimin en taze sebzeleri, doğal peynirler ve katkısız unlar..."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: MENÜ */}
+      <section id="menu" className="min-h-screen bg-neutral-950 py-32 px-8 md:px-16 border-t border-neutral-900">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className="text-6xl md:text-8xl font-serif font-light mb-6">Menümüz</h2>
+            <div className="w-24 h-1 bg-yellow-600 mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
+            {/* Category 1 */}
+            <div>
+              <h3 className="text-3xl font-serif text-yellow-600 mb-8 border-b border-neutral-800 pb-4">Pitalar</h3>
+              <div className="space-y-8">
+                {[1, 2, 3, 4].map((item) => (
+                  <div key={item} className="group">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <h4 className="text-xl font-medium text-neutral-200 group-hover:text-yellow-600 transition-colors">Lorem Ipsum Pita</h4>
+                      <span className="text-yellow-600 font-light">$12.00</span>
+                    </div>
+                    <p className="text-neutral-500 text-sm leading-relaxed">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Category 2 */}
+            <div>
+              <h3 className="text-3xl font-serif text-yellow-600 mb-8 border-b border-neutral-800 pb-4">Kahvaltılıklar</h3>
+              <div className="space-y-8">
+                {[1, 2, 3, 4].map((item) => (
+                  <div key={item} className="group">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <h4 className="text-xl font-medium text-neutral-200 group-hover:text-yellow-600 transition-colors">Dolor Sit Breakfast</h4>
+                      <span className="text-yellow-600 font-light">$15.50</span>
+                    </div>
+                    <p className="text-neutral-500 text-sm leading-relaxed">
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Category 3 */}
+            <div>
+              <h3 className="text-3xl font-serif text-yellow-600 mb-8 border-b border-neutral-800 pb-4">İçecekler</h3>
+              <div className="space-y-8">
+                {[1, 2, 3, 4].map((item) => (
+                  <div key={item} className="group">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <h4 className="text-xl font-medium text-neutral-200 group-hover:text-yellow-600 transition-colors">Consectetur Coffee</h4>
+                      <span className="text-yellow-600 font-light">$4.00</span>
+                    </div>
+                    <p className="text-neutral-500 text-sm leading-relaxed">
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Category 4 */}
+            <div>
+              <h3 className="text-3xl font-serif text-yellow-600 mb-8 border-b border-neutral-800 pb-4">Tatlılar</h3>
+              <div className="space-y-8">
+                {[1, 2, 3, 4].map((item) => (
+                  <div key={item} className="group">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <h4 className="text-xl font-medium text-neutral-200 group-hover:text-yellow-600 transition-colors">Magna Aliqua Dessert</h4>
+                      <span className="text-yellow-600 font-light">$8.50</span>
+                    </div>
+                    <p className="text-neutral-500 text-sm leading-relaxed">
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: REZERVASYON & İLETİŞİM */}
+      <section id="contact" className="min-h-screen bg-neutral-900 relative flex items-center justify-center py-32 px-8 md:px-16">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image src="/2.PNG" alt="Contact Background" fill className="object-cover opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-neutral-950/50" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl w-full bg-neutral-950/50 backdrop-blur-md border border-neutral-800 p-8 md:p-16 rounded-2xl shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+              <h2 className="text-5xl font-serif font-light mb-8 text-white">Bize Ulaşın</h2>
+              <p className="text-neutral-400 mb-12 text-lg">
+                Özel günleriniz, kahvaltı organizasyonlarınız veya akşam yemekleriniz için rezervasyon yapabilirsiniz.
+              </p>
+
+              <div className="space-y-8">
+                <div className="flex items-start gap-6">
+                  <MapPin className="w-8 h-8 text-yellow-600 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-medium text-white mb-2">Adres</h3>
+                    <p className="text-neutral-400">Lara Caddesi No: 123<br />Muratpaşa, Antalya</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-6">
+                  <Phone className="w-8 h-8 text-yellow-600 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-medium text-white mb-2">Telefon</h3>
+                    <p className="text-neutral-400">+90 (242) 123 45 67</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-6">
+                  <InstagramIcon className="w-8 h-8 text-yellow-600 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-medium text-white mb-2">Sosyal Medya</h3>
+                    <p className="text-neutral-400">@pitalara</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-neutral-900/80 p-8 rounded-xl border border-neutral-800">
+              <h3 className="text-2xl font-serif mb-6 text-white">Rezervasyon Yap</h3>
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-sm text-neutral-400 mb-2">İsim Soyisim</label>
+                  <input type="text" className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-600 transition-colors" placeholder="Adınız" />
+                </div>
+                <div>
+                  <label className="block text-sm text-neutral-400 mb-2">Tarih & Saat</label>
+                  <input type="datetime-local" className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-600 transition-colors" />
+                </div>
+                <div>
+                  <label className="block text-sm text-neutral-400 mb-2">Kişi Sayısı</label>
+                  <select className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-600 transition-colors">
+                    <option>2 Kişi</option>
+                    <option>3 Kişi</option>
+                    <option>4 Kişi</option>
+                    <option>5+ Kişi</option>
+                  </select>
+                </div>
+                <button type="button" className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-4 rounded-lg transition-colors mt-4">
+                  Rezervasyon Oluştur
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
