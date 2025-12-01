@@ -63,76 +63,63 @@ export default function Home() {
         </div>
 
         {/* RIGHT SIDE - NAVIGATION (60%) */}
-        <div className="w-full lg:w-[60%] h-[60vh] lg:h-full flex flex-col bg-neutral-950">
-          {/* NAV ITEM 1: HİKAYEMİZ */}
-          <div
-            onClick={() => scrollToSection('story')}
-            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5]"
-          >
-            <Image
-              src="/7.PNG"
-              alt="Hikayemiz"
-              fill
-              className="object-cover opacity-20 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/40 to-transparent" />
-
-            <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">KEŞFET</span>
-                <h2 className="text-2xl md:text-3xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
-                  HİKAYEMİZ
-                </h2>
-              </div>
-              <ArrowDown className="w-5 h-5 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:translate-y-2 opacity-50 group-hover:opacity-100" />
+        <div className="w-full lg:w-[60%] h-[60vh] lg:h-full relative bg-neutral-900 overflow-hidden flex flex-col justify-center items-center">
+          {/* Dynamic Backgrounds */}
+          <div className="absolute inset-0 transition-opacity duration-700 ease-in-out">
+            {/* Default/Story Image */}
+            <div className={`absolute inset-0 transition-opacity duration-1000 ${activeSection === 'story' || activeSection === null ? 'opacity-40' : 'opacity-0'}`}>
+              <Image src="/7.PNG" alt="Story" fill className="object-cover" />
             </div>
+            {/* Menu Image */}
+            <div className={`absolute inset-0 transition-opacity duration-1000 ${activeSection === 'menu' ? 'opacity-40' : 'opacity-0'}`}>
+              <Image src="/4.PNG" alt="Menu" fill className="object-cover" />
+            </div>
+            {/* Contact Image */}
+            <div className={`absolute inset-0 transition-opacity duration-1000 ${activeSection === 'contact' ? 'opacity-40' : 'opacity-0'}`}>
+              <Image src="/3.PNG" alt="Contact" fill className="object-cover" />
+            </div>
+            <div className="absolute inset-0 bg-neutral-950/20" />
           </div>
 
-          {/* NAV ITEM 2: MENÜ */}
-          <div
-            onClick={() => scrollToSection('menu')}
-            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5]"
-          >
-            <Image
-              src="/4.PNG"
-              alt="Menü"
-              fill
-              className="object-cover opacity-20 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/40 to-transparent" />
-
-            <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">LEZZETLER</span>
-                <h2 className="text-2xl md:text-3xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
-                  MENÜ
-                </h2>
-              </div>
-              <Menu className="w-5 h-5 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:scale-110 opacity-50 group-hover:opacity-100" />
+          {/* Navigation Links */}
+          <div className="relative z-10 flex flex-col gap-12 items-center w-full">
+            {/* Story Link */}
+            <div
+              onMouseEnter={() => setActiveSection('story')}
+              onClick={() => scrollToSection('story')}
+              className="group cursor-pointer flex flex-col items-center"
+            >
+              <span className="text-xs text-yellow-600 tracking-[0.4em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">KEŞFET</span>
+              <h2 className="text-5xl md:text-7xl font-serif font-light text-neutral-500 group-hover:text-white transition-colors duration-500 group-hover:scale-110 transform">
+                Hikayemiz
+              </h2>
+              <div className="w-0 group-hover:w-24 h-0.5 bg-yellow-600 mt-4 transition-all duration-500" />
             </div>
-          </div>
 
-          {/* NAV ITEM 3: REZERVASYON */}
-          <div
-            onClick={() => scrollToSection('contact')}
-            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5]"
-          >
-            <Image
-              src="/3.PNG"
-              alt="Rezervasyon"
-              fill
-              className="object-cover opacity-20 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/40 to-transparent" />
+            {/* Menu Link */}
+            <div
+              onMouseEnter={() => setActiveSection('menu')}
+              onClick={() => scrollToSection('menu')}
+              className="group cursor-pointer flex flex-col items-center"
+            >
+              <span className="text-xs text-yellow-600 tracking-[0.4em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">LEZZETLER</span>
+              <h2 className="text-5xl md:text-7xl font-serif font-light text-neutral-500 group-hover:text-white transition-colors duration-500 group-hover:scale-110 transform">
+                Menü
+              </h2>
+              <div className="w-0 group-hover:w-24 h-0.5 bg-yellow-600 mt-4 transition-all duration-500" />
+            </div>
 
-            <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">BİZE ULAŞIN</span>
-                <h2 className="text-2xl md:text-3xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
-                  REZERVASYON
-                </h2>
-              </div>
-              <Calendar className="w-5 h-5 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:rotate-12 opacity-50 group-hover:opacity-100" />
+            {/* Contact Link */}
+            <div
+              onMouseEnter={() => setActiveSection('contact')}
+              onClick={() => scrollToSection('contact')}
+              className="group cursor-pointer flex flex-col items-center"
+            >
+              <span className="text-xs text-yellow-600 tracking-[0.4em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">BİZE ULAŞIN</span>
+              <h2 className="text-5xl md:text-7xl font-serif font-light text-neutral-500 group-hover:text-white transition-colors duration-500 group-hover:scale-110 transform">
+                Rezervasyon
+              </h2>
+              <div className="w-0 group-hover:w-24 h-0.5 bg-yellow-600 mt-4 transition-all duration-500" />
             </div>
           </div>
         </div>
