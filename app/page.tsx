@@ -45,20 +45,20 @@ export default function Home() {
       {/* SPLIT HERO SECTION */}
       <section className="h-screen flex flex-col lg:flex-row relative">
         {/* LEFT SIDE - BRANDING (40%) */}
-        <div className="w-full lg:w-[40%] h-[40vh] lg:h-full relative flex flex-col justify-center px-8 md:px-16 z-20 bg-neutral-950 border-b lg:border-b-0 lg:border-r border-neutral-800">
+        <div className="w-full lg:w-[40%] h-[40vh] lg:h-full relative flex flex-col justify-end pb-20 px-8 md:px-16 z-20 bg-neutral-950 border-r border-neutral-800/50">
           {/* Background Effects */}
           <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-yellow-950/5 to-red-950/10 -z-10" />
           <div className="absolute top-20 right-10 w-64 h-64 bg-yellow-900/5 rounded-full blur-3xl -z-10" />
 
           <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
-            <h1 className="font-serif text-7xl md:text-8xl lg:text-9xl font-light tracking-wider mb-6 leading-none">
+            <h1 className="font-serif text-7xl md:text-8xl lg:text-9xl font-light tracking-wider mb-2 leading-none">
               <span className="block">PITA</span>
               <span className="block text-yellow-600">LARA</span>
             </h1>
-            <p className="text-sm md:text-base font-light tracking-[0.4em] text-neutral-500 mt-8 max-w-md">
-              COFFEE • LUNCH • BREAKFAST
+            <p className="text-2xl md:text-3xl text-neutral-400 mt-4 max-w-md font-[family-name:var(--font-dancing)]">
+              Coffee • Lunch • Breakfast
             </p>
-            <div className="mt-12 w-24 h-1 bg-yellow-600" />
+            <div className="mt-8 w-16 h-0.5 bg-yellow-600" />
           </div>
         </div>
 
@@ -79,12 +79,12 @@ export default function Home() {
 
             <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
               <div className="flex flex-col">
-                <span className="text-xs text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">KEŞFET</span>
-                <h2 className="text-3xl md:text-4xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
+                <span className="text-[10px] text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">KEŞFET</span>
+                <h2 className="text-2xl md:text-3xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
                   HİKAYEMİZ
                 </h2>
               </div>
-              <ArrowDown className="w-6 h-6 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:translate-y-2 opacity-50 group-hover:opacity-100" />
+              <ArrowDown className="w-5 h-5 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:translate-y-2 opacity-50 group-hover:opacity-100" />
             </div>
           </div>
 
@@ -103,12 +103,12 @@ export default function Home() {
 
             <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
               <div className="flex flex-col">
-                <span className="text-xs text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">LEZZETLER</span>
-                <h2 className="text-3xl md:text-4xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
+                <span className="text-[10px] text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">LEZZETLER</span>
+                <h2 className="text-2xl md:text-3xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
                   MENÜ
                 </h2>
               </div>
-              <Menu className="w-6 h-6 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:scale-110 opacity-50 group-hover:opacity-100" />
+              <Menu className="w-5 h-5 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:scale-110 opacity-50 group-hover:opacity-100" />
             </div>
           </div>
 
@@ -127,12 +127,12 @@ export default function Home() {
 
             <div className="absolute inset-0 flex items-center justify-between px-12 md:px-20">
               <div className="flex flex-col">
-                <span className="text-xs text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">BİZE ULAŞIN</span>
-                <h2 className="text-3xl md:text-4xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
+                <span className="text-[10px] text-yellow-600 tracking-[0.3em] mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">BİZE ULAŞIN</span>
+                <h2 className="text-2xl md:text-3xl font-serif font-light tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
                   REZERVASYON
                 </h2>
               </div>
-              <Calendar className="w-6 h-6 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:rotate-12 opacity-50 group-hover:opacity-100" />
+              <Calendar className="w-5 h-5 text-neutral-600 group-hover:text-yellow-600 transition-all duration-500 transform group-hover:rotate-12 opacity-50 group-hover:opacity-100" />
             </div>
           </div>
         </div>
