@@ -1,16 +1,22 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { InstagramIcon, MapPin, ArrowDown, ChevronRight, Menu, Phone, Calendar } from "lucide-react"
+import { InstagramIcon, MapPin, ArrowDown, ChevronRight, Menu, Phone, Calendar, Utensils } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [activeSection, setActiveSection] = useState<string | null>(null)
 
   useEffect(() => {
-    setIsLoaded(true)
+    // Simulate loading for the splash screen
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+      setTimeout(() => setIsLoaded(true), 500)
+    }, 2500)
+    return () => clearTimeout(timer)
   }, [])
 
   const scrollToSection = (id: string) => {
@@ -23,6 +29,19 @@ export default function Home() {
 
   return (
     <main className="bg-neutral-950 text-neutral-100 font-sans overflow-x-hidden">
+      {/* LOADING SPLASH SCREEN */}
+      <div
+        className={`fixed inset-0 z-50 bg-neutral-950 flex flex-col items-center justify-center transition-opacity duration-1000 ${isLoading ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      >
+        <div className="relative mb-8">
+          <div className="w-24 h-24 border-2 border-neutral-800 rounded-full animate-[spin_3s_linear_infinite]" />
+          <div className="absolute inset-0 flex items-center justify-center animate-[spin_3s_linear_infinite_reverse]">
+            <Utensils className="w-10 h-10 text-yellow-600" />
+          </div>
+        </div>
+        <p className="font-serif text-sm tracking-[0.5em] text-neutral-500 animate-pulse">YÜKLENİYOR</p>
+      </div>
+
       {/* SPLIT HERO SECTION */}
       <section className="h-screen flex flex-col lg:flex-row relative">
         {/* LEFT SIDE - BRANDING (40%) */}
