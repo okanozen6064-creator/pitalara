@@ -36,8 +36,8 @@ export default function Home() {
               <span className="block">PITA</span>
               <span className="block text-yellow-600">LARA</span>
             </h1>
-            <p className="text-lg md:text-xl font-light tracking-widest text-neutral-400 mt-6 max-w-md">
-              ARTISAN BREAKFAST & COFFEE
+            <p className="text-sm md:text-base font-light tracking-[0.4em] text-neutral-500 mt-8 max-w-md">
+              COFFEE • LUNCH • BREAKFAST
             </p>
             <div className="mt-12 w-24 h-1 bg-yellow-600" />
           </div>
@@ -72,7 +72,7 @@ export default function Home() {
           {/* NAV ITEM 2: MENÜ */}
           <div
             onClick={() => scrollToSection('menu')}
-            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5] border-t border-white/5"
+            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5]"
           >
             <Image
               src="/4.PNG"
@@ -96,7 +96,7 @@ export default function Home() {
           {/* NAV ITEM 3: REZERVASYON */}
           <div
             onClick={() => scrollToSection('contact')}
-            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5] border-t border-white/5"
+            className="group relative flex-1 cursor-pointer overflow-hidden transition-all duration-700 hover:flex-[1.5]"
           >
             <Image
               src="/3.PNG"
